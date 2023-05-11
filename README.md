@@ -10,6 +10,10 @@ Specify the directory and click the **[Run]** button to execute.
 
 * The generated processed file will have "_unprotected" at the end of the base name.
 
+## Screen image
+
+![screen-image](img/screen-image.png)
+
 ## License
 MIT
 
