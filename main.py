@@ -58,8 +58,12 @@ def main(page):
     dir_path = ft.TextField(label="Directory", autofocus=True)
     dir = ft.Column()
     done = ft.Column()
+    progress = ft.ProgressBar(width=400, color="amber", bgcolor="#eeeeee")
 
     def btn_click(e):
+        page.add(
+            progress
+        )
         s = dir_path.value
         s = s.strip('\"')
         
@@ -72,6 +76,7 @@ def main(page):
                 xlsx_file = Path(xlsx)
                 remove_sheet_protection(xlsx_file)
         
+        page.remove(progress) # Hide prgress bar.
         done.controls.append(ft.Text(value="Done!"))
         
         page.update()
