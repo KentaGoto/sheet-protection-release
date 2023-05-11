@@ -1,3 +1,4 @@
+import flet as ft
 import os
 import zipfile
 import re
@@ -44,8 +45,6 @@ def remove_sheet_protection(xlsx_file):
         for dir in dirs:
             os.rmdir(Path(root) / dir)
     os.rmdir(temp_dir)
-
-    print(f"Unprotected file has been created: {new_xlsx_file}")
     
 
 # Recursively process directories.
@@ -54,18 +53,35 @@ def all_files(directory):
         for file in files:
             yield os.path.join(root, file)
 
-if __name__ == "__main__":
-    s = input("Dir: ")
-    root_dir = s.strip('\"')
+def main(page):
 
-    print("Processing...")
-    print()
+    dir_path = ft.TextField(label="Directory", autofocus=True)
+    dir = ft.Column()
+    done = ft.Column()
 
-    for i in all_files(root_dir):
-        xlsx = pathlib.Path(i)
-        if xlsx.suffix == ".xlsx":
-            xlsx_file = Path(xlsx)
-            remove_sheet_protection(xlsx_file)
+    def btn_click(e):
+        s = dir_path.value
+        s = s.strip('\"')
+        
+        dir.controls.append(ft.Text(f"{s}"))
+        dir_path.value = ""
+        
+        for i in all_files(s):
+            xlsx = pathlib.Path(i)
+            if xlsx.suffix == ".xlsx":
+                xlsx_file = Path(xlsx)
+                remove_sheet_protection(xlsx_file)
+        
+        done.controls.append(ft.Text(value="Done!"))
+        
+        page.update()
+        dir_path.focus()
+        
+    page.add(
+        dir_path,
+        ft.ElevatedButton("Run", on_click=btn_click),
+        dir,
+        done,
+    )
 
-    print("\nDone!")
-    os.system("pause > nul")
+ft.app(target=main)
