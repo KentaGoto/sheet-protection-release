@@ -61,15 +61,19 @@ def main(page):
     progress = ft.ProgressBar(width=400, color="amber", bgcolor="#eeeeee")
 
     def btn_click(e):
+        # Start progress bar.
         page.add(
             progress
         )
+        
+        # Get directory path and strip quotes.
         s = dir_path.value
         s = s.strip('\"')
         
         dir.controls.append(ft.Text(f"{s}"))
         dir_path.value = ""
         
+        # Process xlsx files in directory.
         for i in all_files(s):
             xlsx = pathlib.Path(i)
             if xlsx.suffix == ".xlsx":
