@@ -5,17 +5,8 @@ Unprotects protected sheets in xlsx files. xls is not applicable.
 Does not unprotect the book.
 
 ## Usage
-```
-sheet-protection-release.py
-Dir: <Drag and drop the folder containing the xlsx file.>
-
-Processing...
-
-Unprotected file has been created: sample\sample-file01_unprotected.xlsx
-Unprotected file has been created: sample\sample-file02_unprotected.xlsx
-
-Done!
-```
+Double-click main.py to start it.
+Specify the directory and click the **[Run]** button to execute.
 
 * The generated processed file will have "_unprotected" at the end of the base name.
 
