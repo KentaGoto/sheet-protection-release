@@ -1,11 +1,14 @@
 # sheet-protection-release
+
 This Python application removes sheet protection from all \*.xlsx files in a given directory (and its subdirectories). This tool runs as a desktop application created using Flet.
 
 ### Note
+
 - Does not unprotect the book.
 - xls file is not applicable.
 
 ## Usage
+
 Double-click main.py to start it.
 Specify the directory and click the **[Run]** button to execute.
 
@@ -13,10 +16,12 @@ Specify the directory and click the **[Run]** button to execute.
 
 ## Screen image
 
-![screen-image](img/screen-image.png)
+![screen-image](img/Screen.gif)
 
 ## License
+
 MIT
 
 ## Author
+
 Kenta Goto
